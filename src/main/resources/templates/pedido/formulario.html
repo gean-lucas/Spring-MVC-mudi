@@ -1,0 +1,47 @@
+<html>
+	<head th:replace="~{base :: head}"></head>
+	<body>
+		<div th:replace="~{base :: logo}"></div>
+		
+		<div class="container">
+				<div th:replace="~{base :: titulo('Novo Pedido')}"></div>
+			
+				<div class="card mt-3">
+				<form th:object="${requisicaoNovoPedido}" action="/pedido/novo" method="POST" class="card-body">
+					<div>
+						<label for="nomeProduto" class="form-label">Produto</label>
+						<input th:field="*{nomeProduto}" th:errorclass="is-invalid" placeholder="nome do produto" class="form-control">
+						<small>Informe qual o nome do produto.</small>
+						<div th:errors="*{nomeProduto}" class="invalid-feedback">
+							Erros do nome do produto
+						</div>
+					</div>
+					
+					<div class="mt-3">
+						<label for="urlProduto" class="form-label">Url</label>
+						<input th:field="*{urlProduto}" th:errorclass="is-invalid" placeholder="url do produto" class="form-control">
+						<small>Procure em um site o produto que você deseja e cole a url da página aqui.</small>
+						<div th:errors="*{urlProduto}" class="invalid-feedback">
+							Erros da url
+						</div>
+					</div>
+					
+					<div class="mt-3">
+						<label for="urlImagem" class="form-label">Imagem</label>
+						<input th:field="*{urlImagem}" th:errorclass="is-invalid" placeholder="url da imagem" class="form-control">
+						<small>Copie a url de uma boa imagem do produto e cole aqui para ajudar os compradores.</small>
+						<div th:errors="*{urlImagem}" class="invalid-feedback">
+							Erros da url da imagem
+						</div>
+					</div>
+					
+					<div class="mt-3 mb-3">
+						<label for="descricao">Descrição</label>
+						<textarea th:field="*{descricao}" class="form-control" placeholder="Adicione detalhes importantes para a descrição"></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">Cadastrar</button>
+				</form>
+			</div>
+		</div>
+	</body>	
+</html>	
